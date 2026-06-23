@@ -1,0 +1,50 @@
+pygaze initiation report start
+display resolution: 1920x1080
+display size in cm: 33.8x27.1
+samplerate: 60.0 Hz
+sampletime: 16.666666666666668 ms
+fixation threshold: 1.5 degrees
+speed threshold: 35 degrees/second
+acceleration threshold: 9500 degrees/second**2
+pygaze initiation report end
+start_trial
+MSG fixation_onset trial=1 group=LTR
+start_trial
+ img_left=000.png img_right=001.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=2 group=LTR
+start_trial
+ img_left=002.png img_right=003.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=3 group=LTR
+start_trial
+ img_left=004.png img_right=005.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=4 group=LTR
+start_trial
+ img_left=006.png img_right=007.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=5 group=LTR
+start_trial
+ img_left=001.png img_right=000.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=6 group=LTR
+start_trial
+ img_left=003.png img_right=002.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=7 group=LTR
+start_trial
+ img_left=005.png img_right=004.png group=LTR prime_lang=LTR
+image_onset
+stop_trial
+MSG fixation_onset trial=8 group=LTR
+start_trial
+ img_left=007.png img_right=006.png group=LTR prime_lang=LTR
+image_onset
+stop_trial

@@ -1,0 +1,5 @@
+- 1-paragraph summary
+- How do findings relate to literature?
+- Limitations
+- Challenges during the project
+- Outlook / improvements / lessons learned

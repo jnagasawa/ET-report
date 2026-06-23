@@ -1,0 +1,16 @@
+## Contribution table
+
+| Task | Junichi | Nikhil | Sanaz | Shehab | |
+|------|-------|------|--------|--------|-------|
+| Background Literature | - | - | — | — | |
+| Experiment Design | - | - | — | — | |
+| Stimulus Design | — | — | - | - | |
+| Piloting | — | — | — | - | |
+| Data-Recording | — | - | - | — | |
+| Non-Final-Talk presenting (who talks) | — | - | — | - | |
+| Non-Final-Talk presenting (who prepares) | — | - | — | - | |
+| Final-Talk presenting (who talks) | — | — | — | - | |
+| Final-Talk presenting (who prepares) | — | - | - | - | |
+| Data Analysis Scripts | — | - | — | - | |
+| Report Writing | — | — | - | - | |
+| Report Lectorate | — | - | - | - | |

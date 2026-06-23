@@ -1,0 +1,10 @@
+## Experimental Methods
+- Participants
+- Materials / stimuli
+- Study design
+- Experiment (implementation)
+
+## Analysis methods
+- Preprocessing
+- Quality control (include plots where sensible)
+- Analysis pipeline

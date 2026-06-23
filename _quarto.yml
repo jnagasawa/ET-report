@@ -1,0 +1,22 @@
+project:
+  type: book
+  
+book:
+  title: "Data Analysis Report"
+  author: "Team Members"
+  output-file: "report"
+
+  chapters:
+    - index.qmd
+    - chapters/01-intro.qmd
+    - chapters/02-methods.qmd
+    - chapters/03-results.qmd
+    - chapters/04-discussion.qmd
+    - chapters/05-contribusion-table.qmd
+
+format:
+  pdf:
+    documentclass: book
+    keep-tex: false
+  html:
+    theme: cosmo

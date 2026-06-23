@@ -1,0 +1,51 @@
+name: Render Quarto Report to PDF
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+        if: hashFiles('requirements.txt') != ''
+      
+      - name: Render Quarto project
+        run: quarto render
+      
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-pdf
+          path: _book/report.pdf
+
+      - name: Commit PDF to repository
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cp _book/report.pdf report.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add report.pdf
+          git diff --staged --quiet || git commit -m "Update rendered report.pdf [skip ci]"
+          git push origin HEAD:main

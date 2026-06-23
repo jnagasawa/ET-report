@@ -1,0 +1,3 @@
+- Background (introduction to the topic, related literature)
+- Motivation
+- Research question / hypotheses / dependent measures
