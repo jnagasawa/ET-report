@@ -8,9 +8,18 @@ speed threshold: 35 degrees/second
 acceleration threshold: 9500 degrees/second**2
 pygaze initiation report end
 pygaze calibration report start
-accuracy (degrees): LX=3.9569147212504725, LY=1.2570789192579372, RX=0.8533607147429914, RY=0.9162115092153917
-accuracy (in pixels): LX=192.14720000000003, LY=61.06560000000001, RX=41.454933333333344, RY=44.507999999999996
-precision (RMS noise in pixels): X=136.456274454644, Y=65.7337812599902
+accuracy (degrees): LX=2.7561659265119003, LY=1.0134943862711263, RX=2.1532037611200576, RY=1.0230053589905752
+accuracy (in pixels): LX=133.86666666666667, LY=49.233599999999996, RX=104.58879999999998, RY=49.69559999999999
+precision (RMS noise in pixels): X=188.11844816147956, Y=72.00924034569748
+distance between participant and display: 57.0 cm
+fixation threshold: 72.1350984010696 pixels
+speed threshold: 1.6827679496329635 pixels/ms
+acceleration threshold: 460.9834158742855 pixels/ms**2
+pygaze calibration report end
+pygaze calibration report start
+accuracy (degrees): LX=0.507609996661887, LY=0.24951383067743194, RX=0.3187755184481099, RY=0.4391023370051035
+accuracy (in pixels): LX=24.659199999999974, LY=12.121199999999995, RX=15.485866666666674, RY=21.331199999999992
+precision (RMS noise in pixels): X=26.64896386733951, Y=22.372323963059095
 distance between participant and display: 57.0 cm
 fixation threshold: 72.1350984010696 pixels
 speed threshold: 1.6827679496329635 pixels/ms

@@ -51,3 +51,5 @@ You can also use the [Quarto VS Code extension](https://marketplace.visualstudio
 ## CI
 
 `.github/workflows/render-pdf.yml` renders the PDF on every push/PR to `main`/`develop` and uploads it as a build artifact (download from the run's "Artifacts" section on the Actions tab). On pushes to `main`, it also commits the rendered file back to the repo as `report.pdf`.
+
+**Important:** after pushing to `main`, the bot's commit lands a few seconds later. Run `git pull` before making further commits, otherwise your local `main` will be behind and a later push may be rejected.
