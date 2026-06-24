@@ -1,0 +1,60 @@
+pygaze initiation report start
+display resolution: 1920x1080
+display size in cm: 33.8x27.1
+samplerate: 60.0 Hz
+sampletime: 16.666666666666668 ms
+fixation threshold: 1.5 degrees
+speed threshold: 35 degrees/second
+acceleration threshold: 9500 degrees/second**2
+pygaze initiation report end
+pygaze calibration report start
+accuracy (degrees): LX=0.7323706571896184, LY=1.327858831373315, RX=0.7619702397832787, RY=0.6470226221192449
+accuracy (in pixels): LX=35.57759999999994, LY=64.5036, RX=37.01546666666666, RY=31.431599999999985
+precision (RMS noise in pixels): X=47.957287685787406, Y=60.505518675744696
+distance between participant and display: 57.0 cm
+fixation threshold: 72.1350984010696 pixels
+speed threshold: 1.6827679496329635 pixels/ms
+acceleration threshold: 460.9834158742855 pixels/ms**2
+pygaze calibration report end
+start_trial
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=1 group=LTR
+MSG stimulus_onset trial=1 img_left=000.png img_right=111.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=2 group=LTR
+MSG stimulus_onset trial=2 img_left=002.png img_right=003.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=3 group=LTR
+MSG stimulus_onset trial=3 img_left=222.png img_right=333.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=4 group=LTR
+MSG stimulus_onset trial=4 img_left=006.png img_right=007.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=5 group=LTR
+MSG stimulus_onset trial=5 img_left=001.png img_right=000.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=6 group=LTR
+MSG stimulus_onset trial=6 img_left=003.png img_right=002.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=7 group=LTR
+MSG stimulus_onset trial=7 img_left=333.png img_right=222.png group=LTR prime_lang=LTR
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=8 group=LTR
+MSG stimulus_onset trial=8 img_left=007.png img_right=006.png group=LTR prime_lang=LTR
+image_offset
+stop_trial
