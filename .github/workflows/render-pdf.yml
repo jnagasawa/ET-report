@@ -32,18 +32,18 @@ jobs:
         if: hashFiles('requirements.txt') != ''
       
       - name: Render Quarto project
-        run: quarto render
-      
+        run: quarto render report
+
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: report-pdf
-          path: _book/report.pdf
+          path: report/_book/report.pdf
 
       - name: Commit PDF to repository
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          cp _book/report.pdf report.pdf
+          cp report/_book/report.pdf report.pdf
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add report.pdf
