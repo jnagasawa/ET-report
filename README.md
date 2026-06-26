@@ -2,16 +2,27 @@
 
 [![Render Quarto Report to PDF](https://github.com/jnagasawa/ET-report/actions/workflows/render-pdf.yml/badge.svg)](https://github.com/jnagasawa/ET-report/actions/workflows/render-pdf.yml)
 
-A Quarto book reporting the results of an eye-tracking study (data analysis, figures, and discussion).
+A Quarto book reporting the results of an eye-tracking study investigating spatial scanning biases in speakers of right-to-left and left-to-right languages.
 
 ## Structure
 
-- `index.qmd`, `chapters/` — book chapters (source for the report)
-- `data/` — raw eye-tracking data (`.tsv`, `.csv`, log files) per subject
-- `notebook/` — exploratory Jupyter notebooks
-- `src/` — supporting scripts
-- `img/` — images used in the report
-- `_quarto.yml` — book configuration (chapter order, output formats)
+```
+.
+├── report/             # Quarto book source
+│   ├── _quarto.yml     # book configuration (chapter order, output formats)
+│   ├── index.qmd       # cover / preface
+│   ├── chapters/       # chapter .qmd files
+│   └── references.bib  # bibliography
+├── data/
+│   ├── raw/            # raw eye-tracking data (.tsv, .csv, log files) per subject
+│   └── preprocessed/   # cleaned / processed data
+├── scripts/            # analysis and plotting notebooks
+├── src/                # reusable functions and modules
+├── plots/              # exported figures (reproducible from scripts/)
+├── experiment/         # OpenSesame experiment files
+├── presentation/       # presentation slides
+└── _research/          # work-in-progress notes and drafts
+```
 
 ## Setup
 
@@ -29,24 +40,22 @@ You also need [Quarto](https://quarto.org/docs/get-started/) installed to render
 quarto install tinytex
 ```
 
-(Not needed if you already render PDFs through another tool, e.g. the VS Code Quarto extension with its own TeX setup.)
-
 ## Rendering the report
 
 ```bash
-quarto render            # builds all formats configured in _quarto.yml (html + pdf)
-quarto render --to pdf   # pdf only
-quarto preview           # live preview while editing
+quarto render report            # builds all formats (html + pdf)
+quarto render report --to pdf   # pdf only
+quarto preview report           # live preview while editing
 ```
 
-Output goes to `_book/` (git-ignored).
+Output goes to `report/_book/` (git-ignored).
 
-You can also use the [Quarto VS Code extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) and click "Render" from the editor.
+You can also use the [Quarto VS Code extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) and click "Render Project" from the editor.
 
 ## Adding a chapter
 
-1. Add a new `.qmd` file under `chapters/`.
-2. Add its path to the `chapters:` list in `_quarto.yml`.
+1. Add a new `.qmd` file under `report/chapters/`.
+2. Add its path to the `chapters:` list in `report/_quarto.yml`.
 
 ## CI
 

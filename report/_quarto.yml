@@ -13,10 +13,14 @@ book:
     - chapters/03-results.qmd
     - chapters/04-discussion.qmd
     - chapters/05-contribusion-table.qmd
+    - references.qmd
+
+bibliography: references.bib
 
 format:
   pdf:
-    documentclass: book
+    documentclass: report
     keep-tex: false
+    colorlinks: true
   html:
     theme: cosmo

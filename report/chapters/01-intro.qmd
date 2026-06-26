@@ -1,3 +1,23 @@
-- Background (introduction to the topic, related literature)
-- Motivation
-- Research question / hypotheses / dependent measures
+## Background
+
+A robust leftward bias in early visual exploration has been documented across diverse tasks, including free scene viewing, line bisection, face perception, and two-alternative forced choice paradigms [@foulsham2013; @ossandon2014]. In speakers of left-to-right (LTR) languages, the proportion of initial fixations landing on the left side of a display typically falls between 60% and 93%, depending on the task and stimulus material [@ehinger2026]. Because this preference operates independently of image content, it can substantially reduce the sensitivity of paradigms designed to measure content-driven attentional biases.
+
+The origin of the leftward bias remains debated. A dominant account links it to the right-hemisphere lateralization of the attentional network, which preferentially represents the left hemifield [@corbetta2002]. This explanation does not, however, readily account for cross-linguistic variation: speakers of Arabic and Hebrew show a weaker or reversed preference in line bisection and related tasks [@chokron1993; @rashidi2014], suggesting that habitual reading direction modulates the baseline spatial asymmetry.
+
+Afsari, Ossandón, and König (2016) examined this modulation directly using a priming paradigm. Bilingual participants read either RTL or LTR text passages before freely viewing photographs. Native RTL speakers (Arabic, Urdu, or Persian) showed an early rightward shift in fixation after reading RTL primes, but a leftward shift after LTR primes. Native LTR speakers who had acquired an RTL language later in life did not show comparable flexibility. These results indicate that reading direction influences spatial scanning dynamically, and that the effect depends on habit formation during native language acquisition rather than current language use alone.
+
+Complementary evidence concerns the consequences of spatial biases for experimental design. Ehinger et al. (2026) measured first-fixation preferences in a concurrent two-stimulus paradigm with stimulus pairs placed at six angular positions relative to a central fixation cross. In the standard horizontal (9 o'clock / 3 o'clock) arrangement, German-speaking participants directed their first saccade to the left stimulus on approximately 80% of trials, with a comparable upward bias in the vertical arrangement. A diagonal placement at 1 o'clock and 7 o'clock yielded no net spatial preference, because the leftward and upward biases cancelled. Simulations based on a Bradley-Terry model showed that eliminating the spatial bias can increase statistical power by 30% or more for small attentional effects.
+
+## Motivation
+
+The literature on spatial scanning biases has been developed almost exclusively with LTR-reading populations, and spatial biases are routinely counterbalanced rather than measured as a variable of interest. As a result, little is known about the baseline first-fixation behavior of native RTL speakers in concurrent two-stimulus paradigms. Afsari et al. (2016) showed that reading direction primes can shift the spatial bias in bilingual RTL speakers, but the baseline behavior in the absence of explicit language priming has received less attention.
+
+The findings of Ehinger et al. (2026) raise a further question: if RTL speakers have a reduced or reversed leftward bias, their data from a standard horizontal arrangement may already be relatively unbiased, whereas LTR speakers' data from the same arrangement would suffer substantial power loss. Characterizing the bias across reading-direction groups would therefore inform stimulus placement decisions in studies that test mixed-language samples.
+
+## Research Questions and Hypotheses
+
+We ask whether native RTL speakers (Arabic and Persian) differ from native LTR speakers in their first-fixation behavior when viewing pairs of visual stimuli in a horizontal arrangement.
+
+We expect LTR speakers to replicate the well-documented leftward preference. For RTL speakers, we predict a reduced leftward bias, consistent with line bisection and chimeric face studies. Whether the bias reverses entirely or merely diminishes is an open empirical question.
+
+**Dependent measures:** first fixation proportion (the proportion of trials on which the participant fixated each side first) and first fixation reaction time (latency from stimulus onset to the first fixation on either stimulus).

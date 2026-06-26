@@ -1,3 +1,5 @@
 # Report {.unnumbered}
 
 Final report for eye tracking course.
+
+Source code and data: <https://github.com/jnagasawa/ET-report>
