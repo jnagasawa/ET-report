@@ -32,4 +32,6 @@ _files/
 .DS_Store
 
 # Personal notes (not for the repo)
-scripts/attentional_spatial_bias_*.md
+*.md
+data/
+!README.md
