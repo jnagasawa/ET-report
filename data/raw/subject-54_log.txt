@@ -1,0 +1,260 @@
+pygaze initiation report start
+display resolution: 1536x864
+display size in cm: 33.8x27.1
+samplerate: 60.0 Hz
+sampletime: 16.666666666666668 ms
+fixation threshold: 1.5 degrees
+speed threshold: 35 degrees/second
+acceleration threshold: 9500 degrees/second**2
+pygaze initiation report end
+pygaze calibration report start
+accuracy (degrees): LX=2.838950498551386, LY=2.2126994015657324, RX=1.0060612895696794, RY=2.181637636223414
+accuracy (in pixels): LX=110.30869333333335, LY=85.9824, RX=39.09802666666666, RY=84.77568
+precision (RMS noise in pixels): X=97.84909384884375, Y=129.94480589850275
+distance between participant and display: 57.0 cm
+fixation threshold: 57.708078720855674 pixels
+speed threshold: 1.3462143597063707 pixels/ms
+acceleration threshold: 368.7867326994284 pixels/ms**2
+pygaze calibration report end
+start_trial
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=1 group=RTL
+MSG stimulus_onset trial=1 img_left=000.png img_right=001.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=2 group=RTL
+MSG stimulus_onset trial=2 img_left=002.png img_right=003.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=3 group=RTL
+MSG stimulus_onset trial=3 img_left=004.png img_right=005.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=4 group=RTL
+MSG stimulus_onset trial=4 img_left=006.png img_right=007.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=5 group=RTL
+MSG stimulus_onset trial=5 img_left=008.png img_right=009.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=6 group=RTL
+MSG stimulus_onset trial=6 img_left=010.png img_right=011.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=7 group=RTL
+MSG stimulus_onset trial=7 img_left=012.png img_right=013.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=8 group=RTL
+MSG stimulus_onset trial=8 img_left=014.png img_right=015.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=9 group=RTL
+MSG stimulus_onset trial=9 img_left=000.png img_right=001.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=10 group=RTL
+MSG stimulus_onset trial=10 img_left=002.png img_right=003.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=11 group=RTL
+MSG stimulus_onset trial=11 img_left=004.png img_right=005.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=12 group=RTL
+MSG stimulus_onset trial=12 img_left=006.png img_right=007.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=13 group=RTL
+MSG stimulus_onset trial=13 img_left=008.png img_right=009.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=14 group=RTL
+MSG stimulus_onset trial=14 img_left=010.png img_right=011.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=15 group=RTL
+MSG stimulus_onset trial=15 img_left=012.png img_right=013.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=16 group=RTL
+MSG stimulus_onset trial=16 img_left=014.png img_right=015.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=17 group=RTL
+MSG stimulus_onset trial=17 img_left=000.png img_right=001.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=18 group=RTL
+MSG stimulus_onset trial=18 img_left=002.png img_right=003.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=19 group=RTL
+MSG stimulus_onset trial=19 img_left=004.png img_right=005.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=20 group=RTL
+MSG stimulus_onset trial=20 img_left=006.png img_right=007.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=21 group=RTL
+MSG stimulus_onset trial=21 img_left=008.png img_right=009.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=22 group=RTL
+MSG stimulus_onset trial=22 img_left=010.png img_right=011.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=23 group=RTL
+MSG stimulus_onset trial=23 img_left=012.png img_right=013.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=24 group=RTL
+MSG stimulus_onset trial=24 img_left=014.png img_right=015.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=25 group=RTL
+MSG stimulus_onset trial=25 img_left=000.png img_right=001.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=26 group=RTL
+MSG stimulus_onset trial=26 img_left=002.png img_right=003.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=27 group=RTL
+MSG stimulus_onset trial=27 img_left=004.png img_right=005.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=28 group=RTL
+MSG stimulus_onset trial=28 img_left=006.png img_right=007.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=29 group=RTL
+MSG stimulus_onset trial=29 img_left=008.png img_right=009.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=30 group=RTL
+MSG stimulus_onset trial=30 img_left=010.png img_right=011.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=31 group=RTL
+MSG stimulus_onset trial=31 img_left=012.png img_right=013.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=32 group=RTL
+MSG stimulus_onset trial=32 img_left=014.png img_right=015.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=33 group=RTL
+MSG stimulus_onset trial=33 img_left=000.png img_right=001.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=34 group=RTL
+MSG stimulus_onset trial=34 img_left=002.png img_right=003.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=35 group=RTL
+MSG stimulus_onset trial=35 img_left=004.png img_right=005.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=36 group=RTL
+MSG stimulus_onset trial=36 img_left=006.png img_right=007.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=37 group=RTL
+MSG stimulus_onset trial=37 img_left=008.png img_right=009.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=38 group=RTL
+MSG stimulus_onset trial=38 img_left=010.png img_right=011.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=39 group=RTL
+MSG stimulus_onset trial=39 img_left=012.png img_right=013.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=40 group=RTL
+MSG stimulus_onset trial=40 img_left=014.png img_right=015.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=41 group=RTL
+MSG stimulus_onset trial=41 img_left=000.png img_right=001.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=42 group=RTL
+MSG stimulus_onset trial=42 img_left=002.png img_right=003.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=43 group=RTL
+MSG stimulus_onset trial=43 img_left=004.png img_right=005.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=44 group=RTL
+MSG stimulus_onset trial=44 img_left=006.png img_right=007.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=45 group=RTL
+MSG stimulus_onset trial=45 img_left=008.png img_right=009.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=46 group=RTL
+MSG stimulus_onset trial=46 img_left=010.png img_right=011.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=47 group=RTL
+MSG stimulus_onset trial=47 img_left=012.png img_right=013.png group=RTL prime_lang=RTL
+image_offset
+fixation_point_start
+fixation_point_end
+MSG fixation_onset trial=48 group=RTL
+MSG stimulus_onset trial=48 img_left=014.png img_right=015.png group=RTL prime_lang=RTL
+image_offset
+stop_trial

@@ -33,5 +33,4 @@ _files/
 
 # Personal notes (not for the repo)
 *.md
-data/
 !README.md
