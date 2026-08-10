@@ -1,10 +1,45 @@
 ## Experimental Methods
-- Participants
-- Materials / stimuli
-- Study design
-- Experiment (implementation)
+
+### Participants
+
+Data collection is ongoing. The current dataset includes 14 participants: 9 who selected a left to right (LTR) language (German or English) at the start of the session, and 5 who selected a right to left (RTL) language (Arabic or Persian). Group membership follows this self selected session language rather than a separate native language screening; participants were recruited as native speakers of the language they chose. Age, sex, and other demographic information will be added once collection is complete.
+
+### Materials and stimuli
+
+Stimuli were 16 images (000.png through 015.png) organized into eight fixed pairs. Each pair was shown six times across the session, and its position in this cycle ran independently of the six trial block structure described below, so a given pair was not tied to any particular story segment.
+
+On each trial, the two images of a pair appeared at the same time on opposite sides of a central fixation point, along one of six axis orientations spaced 30° apart (0°, 30°, 60°, 90°, 120°, 150° from horizontal). This follows the arrangement used by Ehinger et al. (2026). Within a block of six trials, each of the six orientations occurred exactly once, in an order randomized per participant.
+
+To keep participants engaged with both images rather than only the one they looked at first, they were asked to count the circular shapes in the pair, distinguished from a similarly sized decagon shown once during the instructions. After each trial the experimenter entered the spoken count (0 to 3) by key press.
+
+Alongside the eye tracking task, participants read a children's story (The Ugly Duckling) presented in nine segments. The first eight were shown one at a time, each before one six trial block; the ninth (the story's resolution) was shown once after the final trial, followed by five comprehension questions asked aloud by the experimenter and recorded manually. The story gave participants sustained exposure to text in their session language and a natural framing for the task; the comprehension questions served as an attention check rather than a scored outcome.
+
+### Study design
+
+The experiment used a between subjects design with reading direction group (LTR vs RTL) as the main factor. Each participant completed 48 trials in 8 blocks of 6, with one story segment shown at the start of each block. Within a block, the six trials sampled the six axis orientations in random order.
+
+### Experiment (implementation)
+
+The task was built in OpenSesame 4.1.14 and run with a GazePoint GP3 HD eye tracker via PyGaze, sampling at 60 Hz. Viewing distance was fixed at 57 cm from a 1536 x 864 px display (33.8 x 27.1 cm). Before the main task, participants chose their session language from four options (Deutsch, English, Arabic, Farsi) with a number key; this choice set both the group assignment and the language of the story text and on screen instructions.
+
+Each trial opened with a central fixation check: the script polled the tracker for up to 1.5 s for a gaze sample within 100 px of screen center, then continued regardless of whether fixation was reached. A fixed 1000 ms delay followed before the image pair appeared. Once the pair was on screen, the tracker was polled for 5000 ms; a gaze sample within 150 px of either image's center was logged as the first fixation, recording its side, latency, and coordinates, but the pair stayed visible for the full 5 s regardless of when a fixation was detected. Calibration was performed once at the start of the session, with per participant accuracy and precision logged automatically.
 
 ## Analysis methods
-- Preprocessing
-- Quality control (include plots where sensible)
-- Analysis pipeline
+
+### Preprocessing
+
+The first fixation on each trial was identified from the raw gaze stream rather than taken from the value logged online during the session. For each trial, samples between stimulus onset and image offset were grouped into fixations by the tracker's own fixation index, and the first fixation starting at or after onset that fell inside a 150 px square area of interest around either stimulus was taken as the response, recording its side and latency. This square matches the margin the experiment script itself used for online detection. Two subjects (43 and 44) were recorded before a display scaling fix was applied to the script, which left their online-logged first fixation side unusable; the raw-stream recomputation is unaffected and was used for all subjects.
+
+Trials were excluded when no fixation landed in either area of interest, or when the first fixation started less than 80 ms after onset, since a saccade that fast is planned before the stimulus appears rather than in response to it. No upper latency cutoff was applied. Slow first fixations were not random: they concentrated in arrangements without a stimulus in the upper left, so removing them would have removed a real part of the effect rather than noise.
+
+Because the six stimulus arrangements are the six diameters of a clock face, a trial's outcome was recoded as the clock hour fixated first rather than a fixed left or right label. Left/right and up/down bias were then derived from this hour, each skipping the one arrangement lying on the axis perpendicular to it (12 to 6 for left/right, 9 to 3 for up/down), since those positions carry no information for that contrast.
+
+### Quality control
+
+Before analysis, each recording was checked for complete trial markers (48 stimulus onsets, offsets, and fixation dot events), image display duration close to the intended 5 s, and effective sampling rate close to 60 Hz with few gaps longer than 50 ms. Calibration quality was estimated per trial from gaze recorded during the central fixation dot: accuracy as the mean distance from screen center, and precision as the RMS spread around each trial's own mean. These were compared across subjects with boxplots and an x/y offset scatter to catch systematic drift, and a small number of trials per subject were plotted as full scanpaths to confirm that gaze actually landed inside the areas of interest and that the arrangement positions matched the intended layout.
+
+### Analysis pipeline
+
+Group comparisons used a hierarchical bootstrap: subjects were resampled first, then trials within each resampled subject, since trials from the same subject are not independent. The point estimate is the unweighted mean of subject means, with the 2.5th and 97.5th percentiles of the resampled distribution as a confidence interval. This was applied to left/right and up/down fixation proportions per group, and to the full 12 hour clock-face profile.
+
+A logistic regression in the style of a Bradley-Terry model estimated the probability of fixating the clockwise-numbered stimulus first as a function of arrangement and reading direction group, giving a single test of whether the two groups differ once arrangement is accounted for. First-fixation latency was examined separately by arrangement and group, since the spatial bias also showed up as a difference in response speed rather than only in which side was chosen.
