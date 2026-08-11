@@ -1,2 +1,4 @@
 /.quarto/
 **/*.quarto_ipynb
+/QTDublinIrish.otf
+/report.tex

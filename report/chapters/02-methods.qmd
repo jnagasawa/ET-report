@@ -12,6 +12,10 @@ On each trial, the two images of a pair appeared at the same time on opposite si
 
 To keep participants engaged with both images rather than only the one they looked at first, they were asked to count the circular shapes in the pair, distinguished from a similarly sized decagon shown once during the instructions. After each trial the experimenter entered the spoken count (0 to 3) by key press.
 
+![Example stimulus pair (pair 1 of 8) as presented on screen. Faint outline shapes embedded in the images are the circles participants were asked to count; the central cross marks the fixation point, not the on-screen fixation dot itself.](../images/methods/stimulus_pair_example.png){#fig-stimulus-pair width="85%"}
+
+![Shape distinction shown once during the instructions: the correct circle to count against the similarly sized incorrect decagon.](../images/methods/shape_examples.png){#fig-shape-examples width="70%"}
+
 Alongside the eye tracking task, participants read a children's story (The Ugly Duckling) presented in nine segments. The first eight were shown one at a time, each before one six trial block; the ninth (the story's resolution) was shown once after the final trial, followed by five comprehension questions asked aloud by the experimenter and recorded manually. The story gave participants sustained exposure to text in their session language and a natural framing for the task; the comprehension questions served as an attention check rather than a scored outcome.
 
 ### Study design
@@ -21,6 +25,10 @@ The experiment used a between subjects design with reading direction group (LTR 
 ### Experiment (implementation)
 
 The task was built in OpenSesame 4.1.14 and run with a GazePoint GP3 HD eye tracker via PyGaze, sampling at 60 Hz. Viewing distance was fixed at 57 cm from a 1536 x 864 px display (33.8 x 27.1 cm). Before the main task, participants chose their session language from four options (Deutsch, English, Arabic, Farsi) with a number key; this choice set both the group assignment and the language of the story text and on screen instructions.
+
+<!-- TODO: replace with a photo of the eye-tracking setup (participant seating, GP3 HD, display) once taken -->
+
+![Stimulus layout and area-of-interest (AOI) definition for one arrangement (10-4 o'clock), drawn to scale. The two images are always equidistant from central fixation, along one of six axis orientations spaced 30° apart; a 150 px radius around each image center defines the AOI used for first-fixation detection.](../images/methods/aoi_schematic.png){#fig-aoi-schematic width="90%"}
 
 Each trial opened with a central fixation check: the script polled the tracker for up to 1.5 s for a gaze sample within 100 px of screen center, then continued regardless of whether fixation was reached. A fixed 1000 ms delay followed before the image pair appeared. Once the pair was on screen, the tracker was polled for 5000 ms; a gaze sample within 150 px of either image's center was logged as the first fixation, recording its side, latency, and coordinates, but the pair stayed visible for the full 5 s regardless of when a fixation was detected. Calibration was performed once at the start of the session, with per participant accuracy and precision logged automatically.
 

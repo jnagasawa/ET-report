@@ -3,7 +3,16 @@ project:
   
 book:
   title: "Data Analysis Report"
-  author: "Team Members"
+  author:
+    - name: "AA"
+      affiliation: "University of Stuttgart"
+    - name: "BB"
+      affiliation: "University of Stuttgart"
+    - name: "CC"
+      affiliation: "University of Stuttgart"
+    - name: "Junichi Nagasawa"
+      affiliation: "University of Stuttgart, Kwansei Gakuin University"
+      orcid: "0009-0001-5866-7348"
   output-file: "report"
 
   chapters:
@@ -12,15 +21,27 @@ book:
     - chapters/02-methods.qmd
     - chapters/03-results.qmd
     - chapters/04-discussion.qmd
-    - chapters/05-contribusion-table.qmd
+    - chapters/05-contribution-table.qmd
     - references.qmd
 
 bibliography: references.bib
 
 format:
-  pdf:
+  titlepage-pdf:
     documentclass: report
     keep-tex: false
     colorlinks: true
+    titlepage: true
+    titlepage-theme:
+      elements: ["\\titleblock", "\\authorblock", "\\vfill"]
+      page-align: "center"
+      title-style: "plain"
+      title-fontsize: 28
+      title-align: "center"
+      author-style: "author-address"
+      author-fontsize: 14
+      author-align: "center"
+      affiliation-style: "none"
+      affiliation-sep: ", "
   html:
     theme: cosmo
