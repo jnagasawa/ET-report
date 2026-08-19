@@ -46,6 +46,69 @@ Trials were excluded when no fixation landed in either area of interest, or when
 
 In the raw log, img_left and img_right label the stimulus on the seven-to-twelve o'clock side of an arrangement and the one on the one-to-six o'clock side, not the physical left and right of the screen; for the vertical arrangement in particular, neither stimulus sits on the horizontal meridian, so calling one of them "the right stimulus" would really mean "the bottom stimulus." To avoid this mislabeling, a trial's outcome was instead recoded as the clock hour fixated first, since the six arrangements are simply the six diameters of a clock face. Left/right and up/down bias were then derived from this hour, each skipping the one arrangement lying on the axis perpendicular to it (12 to 6 for left/right, 9 to 3 for up/down), since those two positions sit on the meridian itself and carry no information for that contrast.
 
+### Sensitivity check: raw samples vs. classified fixations
+
+The preprocessing above uses `FPOGX`/`FPOGY`, GazePoint's own fixation classified gaze coordinates: consecutive raw samples are grouped into discrete fixation events (`FPOGID`) before the area of interest (AOI) test is applied. That classifier smooths and slightly delays the raw signal, so it is worth checking whether the same detection rule, applied to the unclassified gaze stream instead, changes the result. GazePoint also logs `BPOGX`/`BPOGY` ("Best Point of Gaze"), its estimate of gaze position for each raw sample, before any fixation grouping. The two are compared here directly, using the same AOI, trial window, and 80 ms anticipatory cutoff for both; the only thing that changes is whether "first fixation" means the first classified fixation event inside the AOI (FPOG) or the first raw sample inside it (BPOG):
+
+```python
+def compute_bpog_first_gaze(subj, sub_trials):
+    # Same AOI test as compute_fpog_first_fixation, but walks raw
+    # per-sample BPOGX/BPOGY instead of grouping into FPOGID fixations.
+    tsv = pd.read_csv(f"{DATA_DIR}/{subj}.tsv", sep="\t")
+    tsv.replace(["NA", "undefined"], np.nan, inplace=True)
+    for c in ["TIME", "BPOGX", "BPOGY", "BPOGV"]:
+        tsv[c] = pd.to_numeric(tsv[c], errors="coerce")
+    tsv = tsv.dropna(subset=["BPOGX", "BPOGY"]).sort_values("TIME").reset_index(drop=True)
+
+    onsets = tsv[tsv["USER"].astype(str).str.contains("STIMULUS_ONSET", na=False)]
+    offsets = tsv[tsv["USER"].astype(str).str.contains("IMAGE_OFFSET", na=False)]["TIME"].values
+
+    rows = []
+    for (_, onset_row), (_, trial) in zip(onsets.iterrows(), sub_trials.iterrows()):
+        t0 = onset_row["TIME"]
+        later = offsets[offsets > t0]
+        t_end = later[0] if len(later) else t0 + 10.0
+
+        window = tsv[(tsv["TIME"] >= t0) & (tsv["TIME"] <= t_end) & (tsv["BPOGV"] == 1) &
+                     tsv["BPOGX"].between(0, 1) & tsv["BPOGY"].between(0, 1)]
+
+        lx, ly = SCREEN_W / 2 + trial["x_left"], SCREEN_H / 2 + trial["y_left"]
+        rx, ry = SCREEN_W / 2 + trial["x_right"], SCREEN_H / 2 + trial["y_right"]
+
+        side, rt_ms = "none", np.nan
+        for _, s in window.iterrows():
+            xi, yi = s["BPOGX"] * SCREEN_W, s["BPOGY"] * SCREEN_H
+            in_left = abs(xi - lx) < AOI_MARGIN_PX and abs(yi - ly) < AOI_MARGIN_PX
+            in_right = abs(xi - rx) < AOI_MARGIN_PX and abs(yi - ry) < AOI_MARGIN_PX
+            if in_left or in_right:
+                side = "left" if in_left else "right"
+                rt_ms = (s["TIME"] - t0) * 1000.0
+                break
+        rows.append(dict(subject_nr=str(trial["subject_nr"]), trial_nr=int(trial["trial_nr"]),
+                          bpog_first_fix_direction=side, bpog_first_fix_rt_ms=rt_ms))
+    return pd.DataFrame(rows)
+```
+
+The resulting `bpog_first_fix_direction` was merged onto the same trial table, passed through the same `apply_exclusions()` used for FPOG (an 80 ms anticipatory cutoff, no upper cutoff), and compared across groups with the same hierarchical bootstrap used for the FPOG left/right and up/down proportions:
+
+```python
+trials = apply_exclusions(trials, side_col="bpog_first_fix_direction",
+                           rt_col="bpog_first_fix_rt_ms",
+                           min_latency_ms=MIN_LATENCY_MS,
+                           reason_col="bpog_exclusion_reason", excluded_col="bpog_excluded")
+
+df_valid_bpog = trials[~trials["bpog_excluded"]].copy()
+df_valid_bpog["physical_side"] = df_valid_bpog["bpog_fixated_clock"].map(hour_side)
+df_valid_bpog["physical_vert"] = df_valid_bpog["bpog_fixated_clock"].map(hour_vert)
+
+group_lr_bpog, _ = pooled_orientation_table(df_valid_bpog, "physical_side", "right", "left")
+group_ud_bpog, _ = pooled_orientation_table(df_valid_bpog, "physical_vert", "up", "down")
+```
+
+At the trial level, the two measures agreed on direction for 87.9% of trials. The disagreements were lopsided: BPOG called "right" where FPOG called "left" more than twice as often as the reverse (55 vs. 26 trials). That fits a saccade briefly overshooting or sweeping past one AOI on its way to a stable fixation elsewhere: GazePoint's fixation classifier correctly discards a sample like that, but a test that checks every raw sample cannot tell it apart from a genuine fixation. BPOG's exclusion rate under the 80 ms anticipatory cutoff was also five times higher than FPOG's (8.2% vs. 1.6%), since a single raw sample can drift into an AOI for a few milliseconds in a way a fixation, which persists by definition, mostly cannot.
+
+At the group level, the two measures agreed closely for LTR (largest difference across left/right and up/down: 0.028) and less closely for RTL (0.040 for left/right, 0.129 for up/down, where the FPOG estimate of 83.9% dropped to 71.0% under BPOG). RTL's larger movement reflects its smaller sample, 4 subjects against LTR's 8: the same handful of relabelled trials shifts a 4-subject mean more than an 8-subject one, and it falls on the same arrangements (12-6, 7-1, 8-2) that already produced the slowest, noisiest first fixations under FPOG. Still, the direction of every effect held: LTR fixated right and up more often than RTL under both measures, and RTL's upward bias, though smaller under BPOG, stayed clearly above chance. Recomputing first-fixation direction from raw samples adds noise, mostly through brief AOI crossings that are not real fixations, but it does not change any conclusion in this report. FPOG remains the measure used throughout the rest of the analysis.
+
 ### Quality control
 
 Before analysis, each recording was checked for complete trial markers (48 stimulus onsets, offsets, and fixation dot events), image display duration close to the intended 5 s, and effective sampling rate close to 60 Hz with few gaps longer than 50 ms. Calibration quality was estimated per trial from gaze recorded during the central fixation dot: accuracy as the mean distance from screen center, and precision as the RMS spread around each trial's own mean. These were compared across subjects with boxplots and an x/y offset scatter to catch systematic drift, and a small number of trials per subject were plotted as full scanpaths to confirm that gaze actually landed inside the areas of interest and that the arrangement positions matched the intended layout.
