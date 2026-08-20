@@ -1,0 +1,147 @@
+## Results
+
+The 14 participants retained after exclusions (Methods) contributed 661 valid first fixations: 10 LTR participants (473 trials) and 4 RTL participants (188 trials). All results below use the first fixation computed from FPOG, the tracker classified measure used throughout preprocessing. A sensitivity check against raw gaze samples instead of classified fixations, reported in Methods, leaves every conclusion here unchanged.
+
+### Left/right and up/down bias by group
+
+@fig-orientation-bias and @tbl-orientation-bias give the pooled proportion of trials on which each group's first fixation went left, right, up, or down, with hierarchical bootstrap confidence intervals. `physical_side` and `physical_vert` are the same clock-hour-derived columns from Preprocessing, each skipping the one arrangement that carries no information for that axis:
+
+```python
+def pooled_orientation_table(df, axis_col, positive_label, negative_label):
+    rows = []
+    for group, g in df.dropna(subset=[axis_col]).groupby("group"):
+        arrays = [(sg[axis_col] == positive_label).astype(float).values
+                  for _, sg in g.groupby("subject_nr")]
+        p_pos, lo_pos, hi_pos = hierarchical_bootstrap_ci(arrays)
+        rows.append(dict(group=group, direction=positive_label, n_subjects=len(arrays),
+                          n_trials=len(g), p=p_pos, ci_lo=lo_pos, ci_hi=hi_pos))
+        rows.append(dict(group=group, direction=negative_label, n_subjects=len(arrays),
+                          n_trials=len(g), p=1 - p_pos, ci_lo=1 - hi_pos, ci_hi=1 - lo_pos))
+    return pd.DataFrame(rows)
+
+
+group_lr = pooled_orientation_table(df_valid_fpog, "physical_side", "right", "left")
+group_ud = pooled_orientation_table(df_valid_fpog, "physical_vert", "up", "down")
+group_dir = pd.concat([group_lr, group_ud], ignore_index=True)
+```
+
+| Group | Direction | P(first fixation) | 95% CI |
+|:------|:----------|-------------------:|:-------|
+| LTR | left  | 68.7% | [59.2%, 76.5%] |
+| LTR | right | 31.3% | [23.5%, 40.8%] |
+| LTR | up    | 73.0% | [61.7%, 82.6%] |
+| LTR | down  | 27.0% | [17.4%, 38.3%] |
+| RTL | left  | 63.8% | [51.3%, 74.4%] |
+| RTL | right | 36.2% | [25.6%, 48.8%] |
+| RTL | up    | 83.9% | [77.5%, 90.0%] |
+| RTL | down  | 16.1% | [10.0%, 22.5%] |
+
+: Pooled first-fixation direction by group (FPOG-based), with hierarchical bootstrap 95% confidence intervals. {#tbl-orientation-bias}
+
+![First-fixation direction by reading group. Bars are the group mean (hierarchical bootstrap CI); dots are individual subject means; the dashed line marks chance.](../images/results/group_orientation_bias_fpog.png){#fig-orientation-bias width="85%"}
+
+Both groups fixate left and up well above chance, and neither confidence interval for either contrast crosses 50%. LTR's leftward bias (68.7%) sits inside the 60% to 93% range reported for comparable paradigms in the literature reviewed in the Introduction. RTL's leftward bias is smaller (63.8%), in the predicted direction, but the two groups' confidence intervals overlap by a wide margin, so this sample cannot distinguish a real group difference from noise on this contrast alone. The up/down contrast runs the other way: RTL's upward bias (83.9%) is if anything larger than LTR's (73.0%), which the Introduction's hypotheses did not specifically anticipate.
+
+### Clock-face profile
+
+@fig-clock-face breaks the same bias down by all twelve clock positions rather than collapsing to left/right and up/down. Each trial contributes to the two hours actually presented in its arrangement, so every hour's estimate is conditioned on having been on screen at all:
+
+```python
+rows = []
+for _, r in df_valid_fpog.dropna(subset=["fixated_clock"]).iterrows():
+    for h in r["arrangement"]:
+        rows.append(dict(group=r["group"], subject_nr=r["subject_nr"], hour=int(h),
+                          fixated=float(r["fixated_clock"] == h)))
+clock_long = pd.DataFrame(rows)
+
+subj_clock = (clock_long.groupby(["group", "subject_nr", "hour"])["fixated"]
+              .agg(["mean", "count"]).reset_index())
+group_clock = (subj_clock.groupby(["group", "hour"])["mean"]
+               .mean().reset_index(name="p"))  # mean of subject means
+```
+
+Both groups trace a similar shape: fixation probability is highest for the top three to four hours (10 through 1) and lowest for the bottom two (5 through 7), consistent with the up/left preference already visible in the pooled proportions.
+
+![P(first fixation on this clock position, given it was presented), by group. Thick lines are group means; thin lines are individual subjects.](../images/results/clock_face_bias_fpog.png){#fig-clock-face width="80%"}
+
+A few individual hours diverge more than the pooled contrasts suggest. At hour 2 (upper right), RTL fixates first on 70.5% of trials against LTR's 40.0%, RTL's largest single-hour lead over LTR anywhere on the clock. At hour 8 (lower left), the pattern reverses: LTR leads 60.0% to 29.5%. Hour 6 (bottom, on the vertical meridian) is the most extreme point on the plot: LTR still fixates it first on 15.0% of trials, but RTL never does, 0 of 31 trials.
+
+### Individual-subject bias vectors
+
+@fig-quadrant plots each subject as a single point: horizontal bias (P(right) minus P(left)) against vertical bias (P(up) minus P(down)), each rescaled from a 0 to 1 proportion to a -1 to 1 bias so that 0 means no preference:
+
+```python
+subj_rows = []
+for (group, subj), g in df_valid_fpog.groupby(["group", "subject_nr"]):
+    px = (g["physical_side"].dropna() == "right").astype(float).values
+    py = (g["physical_vert"].dropna() == "up").astype(float).values
+    subj_rows.append(dict(group=group, subject_nr=subj,
+                           x=2 * px.mean() - 1, y=2 * py.mean() - 1))
+quad_subj = pd.DataFrame(subj_rows)
+
+group_rows = []
+for group, g in df_valid_fpog.groupby("group"):
+    side_arrays = [(sg["physical_side"].dropna() == "right").astype(float).values
+                   for _, sg in g.groupby("subject_nr")]
+    vert_arrays = [(sg["physical_vert"].dropna() == "up").astype(float).values
+                   for _, sg in g.groupby("subject_nr")]
+    px, px_lo, px_hi = hierarchical_bootstrap_ci(side_arrays)
+    py, py_lo, py_hi = hierarchical_bootstrap_ci(vert_arrays)
+    group_rows.append(dict(group=group, x=2 * px - 1, y=2 * py - 1,
+                            x_ci_lo=2 * px_lo - 1, x_ci_hi=2 * px_hi - 1,
+                            y_ci_lo=2 * py_lo - 1, y_ci_hi=2 * py_hi - 1))
+quad_group = pd.DataFrame(group_rows)
+```
+
+![First-fixation bias as a 2-D vector. Diamonds are group means with hierarchical bootstrap CIs; dots are individual subjects.](../images/results/quadrant_bias_fpog.png){#fig-quadrant width="75%"}
+
+Both group means fall in the up-left quadrant, and their confidence intervals in both dimensions exclude zero, so both groups are reliably biased up and left as a group, matching @fig-orientation-bias. At the individual level, only two subjects have a positive horizontal bias, a net rightward preference: LTR subject 51 (x = 0.20) and RTL subject 54 (x = 0.05, the smallest lean of either sign in the sample). Two LTR subjects (101, 106) have a vertical bias near zero, the only two participants without a clear upward preference. All four RTL subjects show a sizable upward bias (0.61 to 0.75). The two group means themselves sit close together relative to the spread of individual subjects within each group.
+
+### A single test of the group difference
+
+The proportions above answer four separate questions (left/right and up/down, for each group) rather than the one question of primary interest: do LTR and RTL differ once each arrangement's own baseline preference is accounted for? Methods describes a logistic regression built for exactly this: the log odds of fixating the clockwise-numbered stimulus in each pair (`img_right`, the one-to-six o'clock member), as a function of arrangement (six levels) and group:
+
+```python
+import statsmodels.formula.api as smf
+
+df_bt = df_valid_fpog.copy()
+df_bt["y_right"] = (df_bt["fpog_first_fix_direction"] == "right").astype(int)
+df_bt["arrangement_str"] = df_bt["arrangement"].astype(str)
+
+bt_model = smf.logit("y_right ~ C(arrangement_str) + C(group)", data=df_bt).fit(disp=0)
+```
+
+The model converges cleanly (n = 661). Arrangement drives most of the fit: relative to the baseline arrangement, the two arrangements without an upper-left stimulus (7 and 1 o'clock; 8 and 2 o'clock) sharply raise the odds of fixating the clockwise-numbered member of the pair (b = 2.45, p < .001; b = 1.39, p < .001), matching the same two arrangements that produce the slowest first fixations below. The other three arrangements do not differ significantly from baseline.
+
+Group does not reach significance: the RTL coefficient is b = 0.11 (SE = 0.22, p = .63). The direction matches RTL's slightly higher raw rightward proportion above, but with only 4 RTL subjects the estimate is too uncertain to call this a real group difference. This single formal test agrees with the descriptive picture in @tbl-orientation-bias: a difference in the predicted direction that the current sample is too small to confirm.
+
+An arrangement by group interaction, which would give each arrangement its own group comparison instead of one pooled test, was checked and not used:
+
+```python
+inter_model = smf.logit("y_right ~ C(arrangement_str) * C(group)", data=df_bt).fit(disp=0)
+# does not converge: no RTL trial fixates img_right in the (12, 6) arrangement (0 of 31),
+# and that empty cell drives one interaction coefficient toward minus infinity
+```
+
+That empty cell is the same one behind hour 6's 0 of 31 in the clock-face profile above, so the additive model, not the interaction, is what's reported.
+
+### First-fixation latency by arrangement
+
+@fig-latency shows the share of trials with a first fixation slower than 2000 ms, separately by arrangement and group; 2000 ms is a descriptive boundary at the valley of the bimodal latency distribution, not an exclusion criterion:
+
+```python
+SLOW_MS = 2000
+
+lat = df_valid_fpog.dropna(subset=["fpog_first_fix_rt_ms"]).copy()
+lat["arrangement_lbl"] = lat["arrangement"].apply(lambda a: f"{a[0]}-{a[1]}")
+lat["slow"] = lat["fpog_first_fix_rt_ms"] > SLOW_MS
+
+med = lat.groupby(["group", "arrangement_lbl"])["fpog_first_fix_rt_ms"].median().unstack(0)
+pslow = lat.groupby(["group", "arrangement_lbl"])["slow"].mean().unstack(0)
+```
+
+Median latency for both groups (`med` above) stays within 248 to 314 ms across every arrangement and is not shown here, since the fast mode dominates almost everywhere and the group difference lives in the slow tail (`pslow`) instead.
+
+![Share of first fixations slower than 2000 ms, by arrangement and group.](../images/results/latency_by_arrangement_fpog.png){#fig-latency width="85%"}
+
+The slow tail concentrates in the three arrangements without an upper-left stimulus (7-1, 8-2, 12-6) for both groups, and RTL's slow tail in those three arrangements is consistently larger than LTR's: 19.4% versus 6.5% for 7-1, 16.1% versus 7.5% for 8-2, and 25.8% versus 10.3% for 12-6, its largest gap anywhere. In the three arrangements that do offer an upper-left stimulus (9-3, 10-4, 11-5), both groups are fast and the slow tail nearly disappears, reaching exactly 0% for RTL in 10-4 and 11-5. Where the choice proportions above show only a direction consistent with a group difference, latency shows a clearer one: RTL takes longer than LTR specifically in the arrangements where its preferred upper-left target is unavailable.
