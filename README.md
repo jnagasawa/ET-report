@@ -34,7 +34,7 @@ uv sync
 
 This installs Python (matplotlib, pandas, seaborn, etc.) into `.venv`, matching `uv.lock`.
 
-You also need [Quarto](https://quarto.org/docs/get-started/) installed to render the report. For PDF output, Quarto needs a TeX distribution — either install one yourself or run:
+You also need [Quarto](https://quarto.org/docs/get-started/) installed to render the report. For PDF output, Quarto needs a TeX distribution, either install one yourself or run:
 
 ```bash
 quarto install tinytex
