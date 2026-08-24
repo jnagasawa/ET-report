@@ -1,6 +1,6 @@
 ## Results
 
-The 16 participants retained after exclusions (Methods) contributed 757 valid first fixations out of 768 trials: 10 LTR participants (473 trials) and 6 RTL participants (284 trials). The 11 dropped trials split into 7 first fixations faster than 80 ms and 4 trials with no fixation in either area of interest. All results below use the first fixation computed from FPOG, the tracker classified measure used throughout preprocessing. A sensitivity check against raw gaze samples instead of classified fixations, reported in Methods, leaves every conclusion here unchanged.
+The 18 participants retained after exclusions (Methods) contributed 853 valid first fixations out of 864 trials: 10 LTR participants (473 trials) and 8 RTL participants (380 trials). The 11 dropped trials split into 7 first fixations faster than 80 ms and 4 trials with no fixation in either area of interest. All results below use the first fixation computed from FPOG, the tracker classified measure used throughout preprocessing. A sensitivity check against raw gaze samples instead of classified fixations, reported in Methods, leaves every conclusion here unchanged.
 
 ### Left/right and up/down bias by group
 
@@ -29,18 +29,18 @@ group_dir = pd.concat([group_lr, group_ud], ignore_index=True)
 |:------|:----------|-------------------:|:-------|
 | LTR | left  | 68.7% | [59.2%, 76.5%] |
 | LTR | right | 31.3% | [23.5%, 40.8%] |
-| LTR | up    | 73.0% | [62.0%, 82.6%] |
-| LTR | down  | 27.0% | [17.4%, 38.0%] |
-| RTL | left  | 54.2% | [40.0%, 67.6%] |
-| RTL | right | 45.8% | [32.4%, 60.0%] |
-| RTL | up    | 82.2% | [74.1%, 88.9%] |
-| RTL | down  | 17.8% | [11.1%, 25.9%] |
+| LTR | up    | 73.0% | [62.2%, 82.9%] |
+| LTR | down  | 27.0% | [17.1%, 37.8%] |
+| RTL | left  | 56.3% | [44.4%, 67.1%] |
+| RTL | right | 43.7% | [32.9%, 55.6%] |
+| RTL | up    | 83.8% | [77.2%, 89.4%] |
+| RTL | down  | 16.2% | [10.6%, 22.8%] |
 
 : Pooled first-fixation direction by group (FPOG-based), with hierarchical bootstrap 95% confidence intervals. {#tbl-orientation-bias}
 
 ![First-fixation direction by reading group. Bars are the group mean (hierarchical bootstrap CI); dots are individual subject means; the dashed line marks chance.](../images/results/group_orientation_bias_fpog.png){#fig-orientation-bias width="85%"}
 
-Both groups fixate up well above chance. On left/right, LTR does too, but RTL's raw proportion no longer distinguishes it from chance: its CI [40.0%, 67.6%] spans 50%. LTR's leftward bias (68.7%) sits inside the 60% to 93% range reported for comparable paradigms in the literature reviewed in the Introduction; RTL's (54.2%) is smaller and in the predicted direction, but the two groups' CIs overlap by a wide margin, so this contrast alone cannot distinguish a real group difference from noise. The up/down contrast runs the other way: RTL's upward bias (82.2%) is if anything larger than LTR's (73.0%), which the Introduction's hypotheses did not specifically anticipate.
+Both groups fixate up well above chance. On left/right, LTR does too, but RTL's raw proportion no longer distinguishes it from chance: its CI [44.4%, 67.1%] spans 50%. LTR's leftward bias (68.7%) sits inside the 60% to 93% range reported for comparable paradigms in the literature reviewed in the Introduction; RTL's (56.3%) is smaller and in the predicted direction, but the two groups' CIs overlap by a wide margin, so this contrast alone cannot distinguish a real group difference from noise. The up/down contrast runs the other way: RTL's upward bias (83.8%) is if anything larger than LTR's (73.0%), which the Introduction's hypotheses did not specifically anticipate.
 
 ### Clock-face profile
 
@@ -64,7 +64,7 @@ Both groups trace a similar shape: fixation probability is highest for the top t
 
 ![P(first fixation on this clock position, given it was presented), by group. Thick lines are group means; thin lines are individual subjects.](../images/results/clock_face_bias_fpog.png){#fig-clock-face width="80%"}
 
-A few individual hours diverge more than the pooled contrasts suggest, although each hour rests on about eight trials per subject and is correspondingly noisier. At hour 2 (upper right), RTL fixates first on 76.2% of trials against LTR's 40.0%, RTL's largest single-hour lead over LTR anywhere on the clock. At hour 8 (lower left), the pattern reverses: LTR leads 60.0% to 23.8%. Hour 6 (bottom, on the vertical meridian) is the most extreme point on the plot: LTR still fixates it first on 15.0% of trials, but RTL never does, 0 of 47 trials.
+A few individual hours diverge more than the pooled contrasts suggest, although each hour rests on about eight trials per subject and is correspondingly noisier. At hour 2 (upper right), RTL fixates first on 74.3% of trials against LTR's 40.0%, RTL's largest single-hour lead over LTR anywhere on the clock. At hour 8 (lower left), the pattern reverses: LTR leads 60.0% to 25.7%. Hour 6 (bottom, on the vertical meridian) is the most extreme point on the plot: LTR still fixates it first on 15.0% of trials, against just 1 of 63 for RTL.
 
 ### Individual-subject bias vectors
 
@@ -95,7 +95,7 @@ quad_group = pd.DataFrame(group_rows)
 
 ![First-fixation bias as a 2-D vector. Diamonds are group means with hierarchical bootstrap CIs; dots are individual subjects.](../images/results/quadrant_bias_fpog.png){#fig-quadrant width="75%"}
 
-Both group means fall in the up-left quadrant. LTR's confidence intervals in both dimensions exclude zero, so LTR is reliably biased up and left as a group. RTL's vertical CI also excludes zero, but its horizontal CI [-0.36, 0.20] now spans zero, so the group-level leftward lean cannot be distinguished from no preference on this measure alone, matching @tbl-orientation-bias. At the individual level, four subjects have a positive horizontal bias, a net rightward preference: LTR subject 51 (x = 0.20), RTL subject 54 (x = 0.05, the smallest lean of either sign in the sample), and RTL subjects 64 (x = 0.40) and 65 (x = 0.20). Two LTR subjects (101, 106) sit just below zero on the vertical axis (-0.05 and -0.08), the only two participants without an upward preference; every RTL subject shows a positive vertical bias (0.35 to 0.80).
+Both group means fall in the up-left quadrant. LTR's confidence intervals in both dimensions exclude zero, so LTR is reliably biased up and left as a group. RTL's vertical CI also excludes zero, but its horizontal CI [-0.35, 0.11] spans zero, so the group-level leftward lean cannot be distinguished from no preference on this measure alone, matching @tbl-orientation-bias. At the individual level, four subjects have a positive horizontal bias, a net rightward preference: LTR subject 51 (x = 0.20), RTL subject 54 (x = 0.05, the smallest lean of either sign in the sample), and RTL subjects 64 (x = 0.40) and 65 (x = 0.20). Two LTR subjects (101, 106) sit just below zero on the vertical axis (-0.05 and -0.08), the only two participants without an upward preference; every RTL subject shows a positive vertical bias (0.35 to 0.80).
 
 ### A single test of the group difference
 
@@ -112,19 +112,19 @@ bt_model = smf.logit("y_right ~ C(arrangement_str) + C(group)", data=df_bt).fit(
     disp=0, cov_type="cluster", cov_kwds={"groups": df_bt["subject_nr"]})
 ```
 
-The model converges cleanly (n = 757); standard errors are clustered by subject, since trials from the same subject are not independent -- the same reason the proportions above use a hierarchical bootstrap rather than a plain proportion. Arrangement drives most of the fit: relative to the baseline arrangement, the two arrangements without an upper-left stimulus (7 and 1 o'clock; 8 and 2 o'clock) sharply raise the odds of fixating the clockwise-numbered member of the pair (b = 2.30, p < .001; b = 1.38, p < .001), two of the three arrangements with the largest slow latency tails below. The remaining two non-baseline arrangements (11 and 5 o'clock; 12 and 6 o'clock) lower it instead (b = -0.74, p = .003; b = -1.05, p = .053); only 9 and 3 o'clock does not differ from baseline.
+The model converges cleanly (n = 853); standard errors are clustered by subject, since trials from the same subject are not independent -- the same reason the proportions above use a hierarchical bootstrap rather than a plain proportion. Arrangement drives most of the fit: relative to the baseline arrangement, the two arrangements without an upper-left stimulus (7 and 1 o'clock; 8 and 2 o'clock) sharply raise the odds of fixating the clockwise-numbered member of the pair (b = 2.49, p < .001; b = 1.55, p < .001), two of the three arrangements with the largest slow latency tails below. The remaining two non-baseline arrangements (11 and 5 o'clock; 12 and 6 o'clock) lower it instead (b = -0.76, p = .002; b = -0.98, p = .049); only 9 and 3 o'clock does not differ from baseline.
 
-Group does not reach significance: the RTL coefficient is b = 0.58 (cluster SE = 0.42, p = .16). Fit without clustering, the same coefficient comes out p = .002, which would look like a real group difference; that version treats all 757 trials as independent observations, which overstates precision given only 16 subjects, so it is not the one reported. The clustered result agrees with the descriptive picture in @tbl-orientation-bias: a difference in the predicted direction that the current sample is too small to confirm.
+Group does not reach significance: the RTL coefficient is b = 0.51 (cluster SE = 0.38, p = .18). Fit without clustering, the same coefficient comes out p = .003, which would look like a real group difference; that version treats all 853 trials as independent observations, which overstates precision given only 18 subjects, so it is not the one reported. The clustered result agrees with the descriptive picture in @tbl-orientation-bias: a difference in the predicted direction that the current sample is too small to confirm.
 
 An arrangement by group interaction, which would give each arrangement its own group comparison instead of one pooled test, was checked and not used:
 
 ```python
 inter_model = smf.logit("y_right ~ C(arrangement_str) * C(group)", data=df_bt).fit(disp=0)
-# fails outright: no RTL trial fixates img_right in the (12, 6) arrangement (0 of 47),
-# and that empty cell makes the likelihood surface singular
+# converges now that every arrangement x group cell has at least one trial
+# (the (12, 6)/RTL cell, previously empty, is now 1 of 63)
 ```
 
-That empty cell is the same one behind hour 6's 0 of 47 in the clock-face profile above, so the additive model, not the interaction, is what's reported.
+Every cell is now populated, so the interaction model converges. It still isn't the reported result: with only 8 RTL subjects spread across twelve arrangement-by-group cells, and no clustered version of this model fit, its per-arrangement estimates aren't reliable enough to report alongside the clustered additive model above, which is what's used instead.
 
 ### First-fixation latency by arrangement
 
@@ -141,8 +141,8 @@ med = lat.groupby(["group", "arrangement_lbl"])["fpog_first_fix_rt_ms"].median()
 pslow = lat.groupby(["group", "arrangement_lbl"])["slow"].mean().unstack(0)
 ```
 
-Median latency for both groups (`med` above) stays within 248 to 314 ms across every arrangement and is not shown here, since the fast mode dominates almost everywhere and the group difference lives in the slow tail (`pslow`) instead.
+Median latency for both groups (`med` above) stays within 248 to 285 ms across every arrangement and is not shown here, since the fast mode dominates almost everywhere and the group difference lives in the slow tail (`pslow`) instead.
 
 ![Share of first fixations slower than 2000 ms, by arrangement and group.](../images/results/latency_by_arrangement_fpog.png){#fig-latency width="85%"}
 
-The slow tail concentrates in the three arrangements without an upper-left stimulus (7-1, 8-2, 12-6) for both groups, and RTL's slow tail in those three arrangements is consistently larger than LTR's: 12.8% versus 6.5% for 7-1, 10.6% versus 7.5% for 8-2, and 17.0% versus 10.3% for 12-6, its largest gap anywhere. In the three arrangements that do offer an upper-left stimulus (9-3, 10-4, 11-5), both groups are fast and the slow tail nearly disappears, reaching exactly 0% for RTL in 10-4 and 11-5. Where the choice proportions above show only a direction consistent with a group difference, latency points the same way: RTL takes longer than LTR specifically in the arrangements where its preferred upper-left target is unavailable. These are raw shares with no confidence intervals, and each RTL cell holds 47 or 48 trials, so they carry the same caveat about sample size as the proportions do.
+The slow tail concentrates in the three arrangements without an upper-left stimulus (7-1, 8-2, 12-6) for both groups. RTL's slow tail is clearly larger than LTR's in two of the three: 9.5% versus 6.5% for 7-1, and 12.7% versus 10.3% for 12-6, its largest gap anywhere; the third, 8-2, is close to even (7.9% versus 7.5%). In the three arrangements that do offer an upper-left stimulus (9-3, 10-4, 11-5), both groups are fast and the slow tail nearly disappears, reaching exactly 0% for RTL in 10-4 and 11-5. Where the choice proportions above show only a direction consistent with a group difference, latency points the same way for 7-1 and 12-6: RTL takes longer than LTR specifically where its preferred upper-left target is unavailable, though the effect is not uniform across all three such arrangements. These are raw shares with no confidence intervals, and each RTL cell holds 63 or 64 trials, so they carry the same caveat about sample size as the proportions do.

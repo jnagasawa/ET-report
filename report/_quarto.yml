@@ -2,17 +2,17 @@ project:
   type: book
   
 book:
-  title: "Data Analysis Report"
+  title: "Data Analysis Report: Attentional spatial bias in two image tasks"
   author:
-    - name: "AA"
-      affiliation: "University of Stuttgart"
-    - name: "BB"
-      affiliation: "University of Stuttgart"
-    - name: "CC"
-      affiliation: "University of Stuttgart"
     - name: "Junichi Nagasawa"
       affiliation: "University of Stuttgart, Kwansei Gakuin University"
       orcid: "0009-0001-5866-7348"
+    - name: "Sanaz Talebi"
+      affiliation: "University of Stuttgart"
+    - name: "Nikhil Pandey"
+      affiliation: "University of Stuttgart"
+    - name: "Shehab Solyman"
+      affiliation: "University of Stuttgart"
   output-file: "report"
 
   chapters:

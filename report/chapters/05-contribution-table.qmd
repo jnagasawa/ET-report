@@ -1,6 +1,6 @@
 ## Contribution table
 
-| Task | Junichi | Nikhil | Sanaz | Shehab | |
+| Task | Junichi | Sanaz | Nikhil | Shehab | |
 |------|-------|------|--------|--------|-------|
 | Background Literature | - | - | — | — | |
 | Experiment Design | - | - | — | — | |
