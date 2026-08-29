@@ -2,7 +2,7 @@
 
 ### Participants
 
-Data collection is ongoing. Eye tracking data were recorded from 23 participants; two were excluded from all analyses after quality control identified gaze calibration problems severe enough to make their data unusable (see Quality control below). The analyzed dataset includes the remaining 21 participants: 11 who selected a left to right (LTR) language (German or English) at the start of the session, and 10 who selected a right to left (RTL) language (Arabic or Persian). Within the LTR group, 9 participants chose English and 2 chose German; within the RTL group, 7 chose Persian and 3 chose Arabic. Group membership follows this self selected session language rather than a separate native language screening; participants were recruited as native speakers of the language they chose. Age, sex, and other demographic information will be added once collection is complete.
+Eye tracking data were recorded from 23 participants; two were excluded from all analyses after quality control identified gaze calibration problems severe enough to make their data unusable (see Quality control below). The analyzed dataset includes the remaining 21 participants: 11 who selected a left to right (LTR) language (German or English) at the start of the session, and 10 who selected a right to left (RTL) language (Arabic or Persian). Within the LTR group, 9 participants chose English and 2 chose German; within the RTL group, 7 chose Persian and 3 chose Arabic. Group membership follows this self selected session language rather than a separate native language screening; participants were recruited as native speakers of the language they chose.
 
 ### Materials and stimuli
 

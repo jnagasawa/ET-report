@@ -20,7 +20,7 @@ Group membership follows the native language a participant selected and was recr
 
 The arrangement-by-group interaction, which would give each arrangement its own group comparison and test the vertical fallback account directly, converges but is not trustworthy at this sample size: 10 RTL subjects across twelve cells, one of them nearly unanimous (2 of 79 trials went to the lower stimulus), and no clustered version of the model fitted. The hour-by-hour and arrangement-by-arrangement differences described above therefore remain descriptive.
 
-The counting task required participants to engage with both images rather than only the one fixated first, which is a deliberate departure from pure free viewing. First-fixation latency stayed fast, with medians between 248 and 285 ms in every arrangement, which argues against much top-down influence on the very first saccade, but it does not rule out a subtler effect of knowing a count would be required. Finally, demographic variables like age and sex are not yet available for this sample.
+The counting task required participants to engage with both images rather than only the one fixated first, which is a deliberate departure from pure free viewing. First-fixation latency stayed fast, with medians between 248 and 285 ms in every arrangement, which argues against much top-down influence on the very first saccade, but it does not rule out a subtler effect of knowing a count would be required.
 
 ### Challenges during the project
 
