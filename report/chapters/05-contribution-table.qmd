@@ -1,16 +1,16 @@
 ## Contribution table
 
-| Task | Junichi | Sanaz | Nikhil | Shehab | |
+| Task | Junichi | Sanaz | Nikhil | Shehab | LLM |
 |------|-------|------|--------|--------|-------|
-| Background Literature | - | - | — | — | |
-| Experiment Design | - | - | — | — | |
-| Stimulus Design | — | — | - | - | |
-| Piloting | — | — | — | - | |
-| Data-Recording | — | - | - | — | |
-| Non-Final-Talk presenting (who talks) | — | - | — | - | |
-| Non-Final-Talk presenting (who prepares) | — | - | — | - | |
-| Final-Talk presenting (who talks) | — | — | — | - | |
-| Final-Talk presenting (who prepares) | — | - | - | - | |
-| Data Analysis Scripts | — | - | — | - | |
-| Report Writing | — | — | - | - | |
-| Report Lectorate | — | - | - | - | |
+| Background Literature | 50 | - | 50 | - | |
+| Experiment Design | 25 | 25 | 25 | 25 | Translation for different languages |
+| Stimulus Design | - | 100 | - | - | Image background generation |
+| Piloting | 20 | 25 | 35 | 20 | |
+| Data-Recording | 20 | 20 | 40 | 20 | |
+| Non-Final-Talk presenting (who talks) | 15 | 30 | 40 | 15 | |
+| Non-Final-Talk presenting (who prepares) | 30 | 25 | 20 | 25 | Grammar |
+| Final-Talk presenting (who talks) | 25 | 25 | 25 | 25 | |
+| Final-Talk presenting (who prepares) | 35 | 35 | 15 | 15 | Grammar |
+| Data Analysis Scripts | 70 | 5 | 25 | - | Bug fixing and debugging |
+| Report Writing | 95 | 5 | - | - | Grammar check and style |
+| Report Lectorate | 75 | 15 | 5 | 5 | Typos and formatting issues |
